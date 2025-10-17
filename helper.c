@@ -1,10 +1,12 @@
-#ifndef TEST_HELPER_H
-#define TEST_HELPER_H
+#ifndef HELPER_C
+#define HELPER_C
 
 #include "fib.c"
 
 // =============== Helper functions ===============
 
+
+// print an array of fib numbers.
 void printSingleRow(ull *row, int size)
 {
     for (int i = 0; i <= size; i++)
@@ -13,6 +15,8 @@ void printSingleRow(ull *row, int size)
     }
     printf("\n");
 }
+
+
 
 double time_function(ull* (*func)(int, ull *), int n, ull *ops, bool print)
 {
@@ -31,7 +35,7 @@ double time_function(ull* (*func)(int, ull *), int n, ull *ops, bool print)
 }
 
 
-
+// Helper function to main function
 void help() {
     printf("./fib.out N [Type] [Print Level]\n");
     printf("\tN is the index of fib array, required.\n");
@@ -39,5 +43,24 @@ void help() {
     printf("\t[Print Level] leave blank for speed compare only, or print to print row\n");
 
 }
+
+// test single dynamic programming fib function
+void test_a_number(int n, ull (*func)(int, ull *)){
+    ull ops = 0;
+    printf("fib%d is %llu, operations taken: %llu\n",
+        n,func(n,&ops),ops);
+    
+    // initiate table if the function is dynamic programming
+    if(func == fibdp){
+        table_init();
+    }
+
+    }
+void test_fib_array(int n, ull* (*func)(int, ull *)){
+    ull ops = 0;
+    printf("n = %d\n",n);
+    double time = time_function(func,n,&ops, 1);
+    
+    printf("time: %f operation taken: %llu\n", time, ops);}
 
 #endif

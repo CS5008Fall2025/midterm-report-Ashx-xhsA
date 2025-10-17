@@ -1,3 +1,7 @@
+#ifndef FIB_C
+#define FIB_C
+
+
 // Code frame from Lab Dynamic Programming
 // this file includes 3 types of fib implements
 // each implements has one function for generating single number
@@ -9,6 +13,7 @@
 #include <time.h>
 #include <stdint.h>
 
+
 #define MAX 5000
 #define PRINT_SINGLE 1
 #define PRINT_ALL 2
@@ -18,6 +23,12 @@ typedef uint64_t ull;
 // a memo to store data in dp
 static ull table[MAX];
 
+// initiate table
+void table_init(){
+    for(int i = 0; i< MAX; i++){
+        table[i]= 0;
+    }
+}
 
 // =============== fibdp ===============
 // calculate and return the fib number of index n using dynamic programming.
@@ -41,6 +52,7 @@ ull fibdp(int n, ull *ops)
     // store data into memo
     table[n] = fibdp(n-1,ops) + fibdp(n-2,ops);
     (*ops)++;
+
     return table[n];
 }
 
@@ -50,7 +62,7 @@ ull fibdp(int n, ull *ops)
 //       (1) 'n' is the index of the last fib number of the array
 //       (2) 'ops' is a pointer to the operations taken counts
 ull* fibdp_full(int n, ull *ops)
-{
+{   
     ull *row = malloc((sizeof(ull)) * (n+1));
     if(row == NULL){
         return NULL;
@@ -59,6 +71,8 @@ ull* fibdp_full(int n, ull *ops)
     {
         row[i] = fibdp(i, ops);
     }
+    // initiate table when function ends
+    table_init();
     return row;
 }
 
@@ -155,4 +169,4 @@ ull *fib_iterative(int n, ull* ops){
     return row;
 }
 
-
+#endif

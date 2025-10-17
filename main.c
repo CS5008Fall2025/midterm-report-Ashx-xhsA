@@ -1,5 +1,6 @@
 // Main function entrance
 #include "fib.c"
+#include "helper.c"
 
 int main(int argc, char* argv[])
 {

@@ -5,13 +5,9 @@
 #include <time.h>   // so we can use time_t and clock_gettime()
 
 #include "fib.c"
+#include "helper.c"
 
-// test single dynamic programming fib function
-void testSingleNumber(int n){
-    int ops = 0;
-    printf("fib%d is %llu, operations taken: %d\n",
-        n,fibdp(n,&ops),ops);
-}
+
 // =============== Main Functions ===============
 int main(int argc, char *argv[])
 {
@@ -26,21 +22,23 @@ int main(int argc, char *argv[])
 
     int print = 1;
 
-    // Sort our integer array
-    testSingleNumber(data1);
-    testSingleNumber(data2);
-    testSingleNumber(data3);
-    testSingleNumber(data4);
-    testSingleNumber(data5);
-    testSingleNumber(data6);
 
+    printf("======Test single number======\n");
+    test_a_number(data1,fibdp);
+    test_a_number(data2,fibdp);
+    test_a_number(data3,fibdp);
+    test_a_number(data4,fibdp);
+    // test_a_number(data5,fibdp);
+    // test_a_number(data6,fibdp);
 
-    // printIntArray(data1, 11);
-    // printIntArray(data2, 11);
-    // printIntArray(data3, 11);
-    // printIntArray(data4, 11);
-    // printIntArray(data5, 11);
-    // printIntArray(data6, 11);
+    
+    printf("======Test array======\n");
+    test_fib_array(data1,fibdp_full);
+    test_fib_array(data2,fibdp_full);
+    test_fib_array(data3,fibdp_full);
+    test_fib_array(data4,fibdp_full);
+    // test_fib_array(data5,fibdp_full);
+    // test_fib_array(data6,fibdp_full);
 
     return 0;
 }
