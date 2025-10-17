@@ -5,7 +5,7 @@
 - **Author**: Zhanyi Chen
 - **GitHub Repo**: [[linke to github repo with this report](https://github.com/CS5008Fall2025/midterm-report-Ashx-xhsA)]
 - **Semester**:25Spring
-- **Languages Used**: c, Java
+- **Languages Used**: c, python
 
 ## Overview
 
@@ -15,7 +15,7 @@
 
 ### Language 1: C
 
-### Language 2: UPDATE
+### Language 2:Python
 
 ### Comparison and Discussion Between Experiences
 
