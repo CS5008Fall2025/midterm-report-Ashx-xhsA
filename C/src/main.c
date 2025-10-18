@@ -41,7 +41,6 @@ int main(int argc, char* argv[])
         printf("dynamic programming version\n");
         ops = 0;
         time = time_function(fibdp_full, n, &ops, print);
-        printf("time: %f(%llu)\n", time, ops);
         break;
     case 4:
         printf("iterative version\n");
