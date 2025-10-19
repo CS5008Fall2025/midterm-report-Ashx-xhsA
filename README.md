@@ -95,54 +95,59 @@ From time complecity perspective, dynamic gramming is as efficient as iteration 
 
 ## Empirical Data & Discussion
 
-I tested n from 0 to 40, the detail run time and operation results are in [runtime_c.csv](runtime_c.csv) and [operation_count.csv](operation_count.csv).
+I ran C to obtain results for n ranging from 0 to 40. Detailed data is provided in the table below： [runtime_c.csv](runtime_c.csv) 
+
+ [operation_count.csv](operation_count.csv).
 
 From the operation count in the table below we can see that the iterative method and dynamic programming have exactly the same number. That's because they all use some extra space(variables, memo table) to store the previous data, thus every index will only be calculated once, which saves a lot of redundant operaction.
 
-Recursive method's operation count is exponential growth. it has many redundant steps.
+Recursive method's operation count is exponential growth. it has redundant steps.
+
+This is a comparison chart of the number of operations performed using C. Iterative and DP overlap：
+
+![runtime-comparasion-C](./operations_comparation_C.png)
 
 
 
-#### Operations Count 
+This is a runtime comparison chart for C implementations. Iterative and DP overlap：
 
-| **N** | **Iterative** | **Dynamic Programming** | **Recursive** |
-| ----- | ------------: | ----------------------: | ------------: |
-| 0     |             0 |                       0 |             0 |
-| 1     |             0 |                       0 |             0 |
-| 2     |             1 |                       1 |             1 |
-| 3     |             2 |                       2 |             3 |
-| 4     |             3 |                       3 |             7 |
-| 5     |             4 |                       4 |            14 |
-| 6     |             5 |                       5 |            26 |
-| 7     |             6 |                       6 |            46 |
-| 8     |             7 |                       7 |            79 |
-| 9     |             8 |                       8 |           133 |
-| 10    |             9 |                       9 |           221 |
-| 11    |            10 |                      10 |           364 |
-| 12    |            11 |                      11 |           596 |
-| 13    |            12 |                      12 |           972 |
-| 14    |            13 |                      13 |          1581 |
-| 15    |            14 |                      14 |          2567 |
-| 16    |            15 |                      15 |          4163 |
-| 17    |            16 |                      16 |          6746 |
-| 18    |            17 |                      17 |         10926 |
-| 19    |            18 |                      18 |         17690 |
-| 20    |            19 |                      19 |         28635 |
-| 21    |            20 |                      20 |         46345 |
-| 22    |            21 |                      21 |         75001 |
-| 23    |            22 |                      22 |        121368 |
-| 24    |            23 |                      23 |        196392 |
-| 25    |            24 |                      24 |        317784 |
-| 26    |            25 |                      25 |        514201 |
-| 27    |            26 |                      26 |        832011 |
+![runtime-comparasion-C](./runtime-comparasion-C.png)
+
+
 
 ## Language Analysis
 
 ### Language 1: C
 
+During my use of the C language, I encountered issues with pointer usage. Initially, I assumed that a for loop couldn't modify the value of an outer variable. After researching, I discovered that the contents of the for loop and the outer scope share the same stack. Pointers are primarily used to pass variables between functions. Another issue was organizing the program into modules and separating the main function. This led to issues with duplicate definitions caused by mutual file references, which I resolved using #ifndef statements.
+
 ### Language 2:Python
 
+For the Python program, I primarily modified the Pascal file in midterm-sample. I noticed that the recursive and dynamic programming implementations in Python are nearly identical. The key difference lies in using `@lru_cache` to enable memoization in the `fib_dp` function, thereby avoiding redundant calculations of identical values.
+
+I ran Python to generate results for n ranging from 0 to 40. Detailed data is provided in the table below：
+
+ [timings_fib_run.csv](Python/timings_fib_run.csv) 
+
+ [ops_fib_run.csv](Python/ops_fib_run.csv) 
+
+This is a comparison chart of  the number of operations performed using Python. The iterative approach overlaps with the DP solution:
+
+![operation-comparasion-python](./operation-comparasion-python.png)
+
+
+
+This is a comparison chart of runtime performance using Python. The iterative approach overlaps with the DP solution:
+
+![time-comparasion-python](/Users/mineral/Desktop/midterm-report-Ashx-xhsA/time-comparasion-python.png)
+
 ### Comparison and Discussion Between Experiences
+
+![recursive-time-c-python-comparasion](./recursive-time-c-python-comparasion.png)
+
+
+
+![Recursive_Iterative_C_Python](./Recursive_Iterative_C_Python.png)
 
 ## Conclusions / Reflection
 
