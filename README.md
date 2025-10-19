@@ -143,13 +143,21 @@ This is a comparison chart of runtime performance using Python. The iterative ap
 
 ### Comparison and Discussion Between Experiences
 
+
+
+Below is a comparison of runtime between C and Python implementations of the recursive algorithm：
+
 ![recursive-time-c-python-comparasion](./recursive-time-c-python-comparasion.png)
+
+I tested iterative and DP methods within the range of n from 1 to 10000 with a step size of 100. Below is a comparison of runtime between iterative and DP algorithms in C and Python：
 
 
 
 ![Recursive_Iterative_C_Python](./Recursive_Iterative_C_Python.png)
 
 ## Conclusions / Reflection
+
+Overall, C language is faster than Python. DP simply adds a table to the recursive framework, yet it significantly reduces redundant computations. However, this comes at the cost of some additional space usage. Iterative algorithms are slightly faster than DP, likely because they don't repeatedly consult the table—they only need to examine the two preceding data.
 
 ## References
 
